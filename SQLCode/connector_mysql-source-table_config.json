@@ -3,16 +3,23 @@
   "config": {
     "connector.class": "io.confluent.connect.jdbc.JdbcSourceConnector",
     "tasks.max": "1",
+    "key.converter": "io.confluent.connect.avro.AvroConverter",
+    "transforms": "ConvertCase",
     "errors.retry.timeout": "1",
-    "connection.url": "jdbc:mysql://localhost:3306/sys",
+    "transforms.ConvertCase.type": "kafka.connect.smt.ConvertCase$Value",
+    "transforms.ConvertCase.convert.from.to": "LOWERCASE",
+    "connection.url": "jdbc:mysql://localhost:3306/sys?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
     "connection.user": "root",
     "connection.password": "rootroot",
     "connection.attempts": "1",
     "table.whitelist": "SOURCE_TABLE",
-    "mode": "bulk",
+    "mode": "timestamp+incrementing",
     "incrementing.column.name": "ID",
+    "timestamp.column.name": "LAST_UPDATED",
     "table.types": "TABLE",
     "poll.interval.ms": "3000",
-    "topic.prefix": "*"
+    "topic.prefix": "lowercase-",
+    "schema.registry.url": "http://localhost:8081/",
+    "key.converter.schema.registry.url": "http://localhost:8081/"
   }
 }
