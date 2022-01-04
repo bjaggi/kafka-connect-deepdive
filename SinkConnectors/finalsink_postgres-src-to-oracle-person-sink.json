@@ -6,7 +6,7 @@
     "key.converter": "org.apache.kafka.connect.storage.StringConverter",
     "key.converter.schemas.enable": "false",
     "topics": "postgre_src_person",
-    "connection.url": "jdbc:oracle:thin:@//oracledb.1fbusa.com:1521/stgoop?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
+    "connection.url": "jdbc:oracle:thin:@//oracledb.com:1521/stgoop?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
     "connection.user": "dbuser",
     "connection.password": "dbpassword",
     "insert.mode": "upsert",
@@ -15,9 +15,9 @@
     "pk.fields": "DW_BU_ID",
     "auto.create": "false",
     "auto.evolve": "false",
-    "schema.registry.url": "https://psrc-gq7pv.westus2.azure.confluent.cloud",
-    "value.converter.schema.registry.url": "https://psrc-gq7pv.westus2.azure.confluent.cloud",
+    "schema.registry.url": "https://psrc-gq7pv.westus.azure.confluent.cloud",
+    "value.converter.schema.registry.url": "https://psrc-gqpv.westus2.azure.confluent.cloud",
     "value.converter.basic.auth.credentials.source": "USER_INFO",
-    "value.converter.schema.registry.basic.auth.user.info": "SQWLHTFDXRLBZWIG:7E6oySGDJ3uAq/KjG5gYhUsT7oH/eNSXr2DzoivjIlrSDWTEUlr55xsSJJ"
+    "value.converter.schema.registry.basic.auth.user.info": "SQWLHFDXRLBZWIG:7E6oySGDJuAq/KjG5gYhUsT7oH/eNSXr2DzoivjIlrSDWTEUlr55xsSJJ"
   }
 }
