@@ -1,0 +1,36 @@
+{
+  "name": "sqlserver-person-src",
+  "config": {
+    "connector.class": "io.confluent.connect.jdbc.JdbcSourceConnector",
+    "value.converter": "io.confluent.connect.avro.AvroConverter",
+    "connection.url": "jdbc:sqlserver://SQLDB:9505;databaseName=Kafka_Testdb15v",
+    "connection.user": "dbuser",
+    "connection.password": "dbpassword",
+    "table.whitelist": "person",
+    "mode": "timestamp",
+    "timestamp.column.name": "insert_timestamp",
+    "validate.non.null": "false",
+    "schema.registry.url": "https://psrc-gq7pv.westus2.azure.confluent.cloud",
+    "value.converter.schema.registry.url": "https://psrc-gq7pv.westus2.azure.confluent.cloud",
+    "value.converter.basic.auth.credentials.source": "USER_INFO",
+    "value.converter.schema.registry.basic.auth.user.info": "SQWLHTFDXRLBZWIG:mTegGDJ3uAq/KjG5gYhUsH/eNSXr2DzoivjIlrSDWTEUlr55xsSJJ",
+    "topic.prefix" : "sqlserver_src_",
+
+    "transforms":  "createKey, extractInt, filterPostGres, filterOracle",
+"transforms.createKey.type": "org.apache.kafka.connect.transforms.ValueToKey",
+"transforms.extractInt.type":"org.apache.kafka.connect.transforms.ExtractField$Key",
+"transforms.extractInt.field":"dw_bu_id",
+"transforms.createKey.fields": "dw_bu_id",
+"transforms.filterPostGres.type": "io.confluent.connect.transforms.Filter$Value",
+"transforms.filterPostGres.filter.condition": "$[?(@.origin == \"postgresql\")]",
+"transforms.filterPostGres.filter.type": "exclude",
+"transforms.filterPostGres.missing.or.null.behavior": "include",
+
+
+
+"transforms.filterOracle.type": "io.confluent.connect.transforms.Filter$Value",
+"transforms.filterOracle.filter.condition": "$[?(@.origin == \"oracle\")]",
+"transforms.filterOracle.filter.type": "exclude",
+"transforms.filterOracle.missing.or.null.behavior": "include"
+  }
+}

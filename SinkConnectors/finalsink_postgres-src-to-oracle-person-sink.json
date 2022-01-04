@@ -1,0 +1,23 @@
+{
+  "name": "postgres-src-to-oracle-person-sink",
+  "config": {
+    "connector.class": "io.confluent.connect.jdbc.JdbcSinkConnector",
+    "value.converter": "io.confluent.connect.avro.AvroConverter",
+    "key.converter": "org.apache.kafka.connect.storage.StringConverter",
+    "key.converter.schemas.enable": "false",
+    "topics": "postgre_src_person",
+    "connection.url": "jdbc:oracle:thin:@//oracledb.1fbusa.com:1521/stgoop?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
+    "connection.user": "dbuser",
+    "connection.password": "dbpassword",
+    "insert.mode": "upsert",
+    "table.name.format": "PERSON",
+    "pk.mode": "record_key",
+    "pk.fields": "DW_BU_ID",
+    "auto.create": "false",
+    "auto.evolve": "false",
+    "schema.registry.url": "https://psrc-gq7pv.westus2.azure.confluent.cloud",
+    "value.converter.schema.registry.url": "https://psrc-gq7pv.westus2.azure.confluent.cloud",
+    "value.converter.basic.auth.credentials.source": "USER_INFO",
+    "value.converter.schema.registry.basic.auth.user.info": "SQWLHTFDXRLBZWIG:7E6oySGDJ3uAq/KjG5gYhUsT7oH/eNSXr2DzoivjIlrSDWTEUlr55xsSJJ"
+  }
+}

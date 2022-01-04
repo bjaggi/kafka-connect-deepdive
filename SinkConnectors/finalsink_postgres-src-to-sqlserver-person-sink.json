@@ -1,0 +1,24 @@
+{
+  "name": "postgres-src-to-sqlserver-person-sink",
+  "config": {
+    "connector.class": "io.confluent.connect.jdbc.JdbcSinkConnector",
+    "value.converter": "io.confluent.connect.avro.AvroConverter",
+    "key.converter": "org.apache.kafka.connect.storage.StringConverter",
+    "key.converter.schemas.enable": "false",
+    "topics": "postgre_src_person",
+    "connection.url": "jdbc:sqlserver://sqldb:9505;databaseName=Kafka_Testdb15v",
+    "connection.user": "dbuser",
+    "connection.password": "dbpassword",
+    "dialect.name": "SqlServerDatabaseDialect",
+    "insert.mode": "upsert",
+    "table.name.format": "person",
+    "pk.mode": "record_key",
+    "pk.fields": "DW_BU_ID",
+    "auto.create": "false",
+    "auto.evolve": "false",
+    "schema.registry.url": "https://psrc-gq7pv.westus2.azure.confluent.cloud",
+    "value.converter.schema.registry.url": "https://psrc-gq7pv.westus2.azure.confluent.cloud",
+    "value.converter.basic.auth.credentials.source": "USER_INFO",
+    "value.converter.schema.registry.basic.auth.user.info": "SQWLHTFDXRLBZWIG:7E6oySTKmTegGDKjG5gYhUsT7oH/eNSXr2DzoivjIlrSDWTEUlr55xsSJJ"
+  }
+}

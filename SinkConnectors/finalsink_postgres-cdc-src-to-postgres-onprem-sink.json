@@ -1,0 +1,24 @@
+{
+  "name": "postgres-cdc-src-to-postgres-onprem-sink",
+  "config": {
+    "connector.class": "io.confluent.connect.jdbc.JdbcSinkConnector",
+    "value.converter": "io.confluent.connect.avro.AvroConverter",
+    "key.converter": "org.apache.kafka.connect.storage.StringConverter",
+    "key.converter.schemas.enable": "false",
+    "topics": "ccapppg.ccappadmin.visit",
+    "connection.url": "jdbc:postgresql://postgresserver.1fbusa.com:5432/db_name?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
+    "connection.user": "kafkaapp",
+    "connection.password": "dbpass123!2",
+    "dialect.name": "PostgreSqlDatabaseDialect",
+    "insert.mode": "upsert",
+    "table.name.format": "ccappadmin.visit",
+    "pk.mode": "record_key",
+    "pk.fields": "visit_id",
+    "auto.create": "true",
+    "auto.evolve": "true",
+    "schema.registry.url": "https://psrc-gq7pv.westus2.azure.confluent.cloud",
+    "value.converter.schema.registry.url": "https://psrc-gq7pv.westus2.azure.confluent.cloud",
+    "value.converter.basic.auth.credentials.source": "USER_INFO",
+    "value.converter.schema.registry.basic.auth.user.info": "SQWLHTFDXRLBZWIG:7E6oySTKmTegGDJ3uAq/KjG5gYhUsT7oH/eNSXr2DzoivjIlrSDWTEUlr55xsSJJ"
+  }
+}
