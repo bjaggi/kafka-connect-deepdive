@@ -1,0 +1,14 @@
+{
+  "name": "PostgresConnectorConnector_0",
+  "config": {
+    "connector.class": "io.debezium.connector.postgresql.PostgresConnector",
+    "database.server.name": "bankserver1",
+    "database.hostname": "localhost",
+    "database.port": "5432",
+    "database.user": "start_data_engineer",
+    "database.password": "password",
+    "database.dbname": "start_data_engineer",
+    "plugin.name": "pgoutput",
+    "table.whitelist": "bank.holding"
+  }
+}
